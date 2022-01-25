@@ -8,9 +8,14 @@
     <title>Hello World!</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    Estamos utilizando Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    e Electron <span id="electron-version"></span>.
+    <script>
+      function cmd(){
+
+        var shell = new ActiveXObject( "WScript.shell" );
+        shell.run( "C:\Users\amurha_p\python lcu-mm-auto-accept-auto-lock-champion.py", 1, true );
+      };
+    </script>
+    
+    <a href="#" onClick="cmd()">Chama programa JAVASCRIPT</a><BR>
   </body>
 </html>
