@@ -20,8 +20,8 @@ label {
     float: right;
     border-radius: 100px;
     position: relative;
-    top: 5.2px;
-    left: -9px;
+    top: 3.4px;
+    left: -98px;
 }
 
 label::after{
@@ -85,15 +85,17 @@ label:active:after {
 
 /* } */
 .search-id{
-    position: relative;
-    width: 317px;
+    border: none;
+    outline: none;
+    position: absolute;
+    width: 318px;
     height: 40px;
-    left: 15px;
-    top: 110px;
+    left: 25px;
+    top: 113px;
     background: #F9AF22;
     border-radius: 2px 2px 0px 0px;
     z-index: 1;
-
+    cursor: pointer;
     font-family: 'Be Vietnam Pro', sans-serif;
     font-style: normal;
     font-weight: 300;
@@ -107,6 +109,14 @@ label:active:after {
 
     color: #212237;
 
+    transition: background-color .3s;
+
+}
+.search-id:hover{
+    background-color: #FFC962;
+}
+.search-id:active{
+        background-color: #D88D00;
 }
  #text-which{
 
@@ -136,7 +146,7 @@ label:active:after {
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     
-    border-radius: 2px;
+    border-radius: 2px, 2px, 2px, 2px;
     left: 25px;
     top: 138px;
     z-index: 0;
@@ -163,21 +173,21 @@ label:active:after {
     left: 25px;
     top: 325px;
     background: #FFFFFF;
-    border-radius: 15px 2px 2px 15px;
+    border-radius: 0px 0px 4px 4px;
 
 }
 
 #text-insta{
     position: absolute;
     font-family: 'Be Vietnam Pro', sans-serif;
-    font-style: light;
+    font-style: normal;
     font-weight: 300;
-    font-size: 12px;
-    line-height: 82.6%;
-    /* or 7px */
-    top: 3.6px;
-    left: 45px;
-    color: #212237;
+    font-size: 15px;
+    line-height: 100.6%;
+    /* or 15px */
+    left: 40px;
+    top: -4.5px;
+    color: #5B5B5B;
 
 }
 
@@ -185,6 +195,8 @@ label:active:after {
 
 
 .button-start{
+    border: none;
+    outline: none;
     position: fixed;
     width: 159px;
     height: 36px;
@@ -197,7 +209,9 @@ label:active:after {
     line-height: 82.6%;
     /* or 12px */
 
+    transition: background-color .3s;
 
+    cursor: pointer;
     color: #212237;
     bottom: 23px;
     left: 106px;
@@ -216,14 +230,15 @@ label:active:after {
 
 }
 .get-id {
+    border: none;
+    outline: none;
     position: relative;
     width: 288px;
     height: 49px;
     left: 13px;
     background: #E5E5E5;
     border-radius: 40px;
-    
-    
+
     font-family: 'Be Vietnam Pro', sans-serif;
     font-style: normal;
     font-weight: 300;
@@ -237,14 +252,42 @@ label:active:after {
 
     color: #212237;
     }
-/* ESSE COMANDO NAO FUNCIONA FOADASE VOU SURTAR AAAAAAAAASSSSSAAAAAAAAAAAAAAAAAAA */
-/* button:focus {
-    outline:none;
-    box-shadow: none;
-  } 
-  input:focus, textarea:focus, select:focus{
-    background-color: transparent;
+.get-button {
+    border: none;
     outline: none;
-    box-shadow: none;
+    position: relative;
+    width: 63px;
+    height: 29px;
+    left: 248px;
+    top: -23px;
+
+    cursor: pointer;
+    background: #F9AF22;
+    border-radius: 40px 0px 5px 11px;
+
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 82.6%;
+    /* or 12px */
+    transition: background-color .3s;
+
+    color: #212237;
+
 }
-*/
+.get-button:hover{
+    background-color: #FFC962;
+}
+.button-start:hover{
+    background-color: #FFC962;
+}
+
+/* click button animation */
+
+.get-button:active{
+    background-color: #D88D00;
+}
+.button-start:active{
+    background-color: #D88D00;
+}
