@@ -6,7 +6,7 @@ const createWindow = () => {
     height: 495,
     resizable: false,
   });
-  win.setSkipTaskbar(true);
+
   win.setMenu(null);
   win.loadFile('index.html');
  
