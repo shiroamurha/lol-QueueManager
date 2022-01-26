@@ -1,5 +1,5 @@
 body {
-    background-color: #DCDCDC;
+    background-color: #212237;
     font-size: 100%;
 }
 
@@ -16,7 +16,7 @@ label {
     text-indent: -9999px;
     width: 52px;
     height: 27px;
-    background: #F1F1F1;
+    background: #D3D3D3;
     float: right;
     border-radius: 100px;
     position: relative;
@@ -36,7 +36,7 @@ label::after{
     transition: 0.3s;
 }
 input:checked + label {
-    background: #F1F1F1;
+    background: #D3D3D3;
 }
 
 input:checked + label::after {
@@ -55,8 +55,9 @@ label:active:after {
     top: 0%;
     left: 0%;
     border-radius: 0px;
-    
+   
     background: #FFFFFF;
+    box-shadow: 0px 3px #F9AF22, -1em 0 0.4em;
 }
 .title-app {
     position:absolute;
@@ -71,7 +72,6 @@ label:active:after {
     font-size: 22px;
     line-height: 82.6%;
     /* or 18px */
-
 
     color: #212237;
 }
@@ -115,7 +115,7 @@ label:active:after {
     height: 51px;
     left: 25px;
     top: 258px;
-    background: #F1F1F1;
+    background: #D3D3D3F1;
     border-radius: 0px 0px 2px 15px;
     z-index: 1;
 }
@@ -176,7 +176,7 @@ label:active:after {
     height: 19px;
     top: 435px;
     left: 243px;
-    background: #FF7575;
+    background: #F9AF22;
     border-radius: 400px;
 
     
@@ -194,7 +194,13 @@ label:active:after {
 }
 
 /* ESSE COMANDO NAO FUNCIONA FOADASE VOU SURTAR AAAAAAAAASSSSSAAAAAAAAAAAAAAAAAAA */
-button:focus {
+/* button:focus {
     outline:none;
     box-shadow: none;
-  }
+  } 
+  input:focus, textarea:focus, select:focus{
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+}
+*/
