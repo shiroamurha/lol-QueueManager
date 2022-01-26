@@ -1,0 +1,19 @@
+{
+  "name": "lol-instapick",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+   "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shiroamurha/lol-instapick.git"
+  },
+  "author": "Shiro Amurha, Obrien Tatsuya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shiroamurha/lol-instapick/issues"
+  },
+  "homepage": "https://github.com/shiroamurha/lol-instapick#readme"
+}

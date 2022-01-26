@@ -2,20 +2,51 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <script>
-      function cmd(){
-
-        var shell = new ActiveXObject( "WScript.shell" );
-        shell.run( "C:\Users\amurha_p\python lcu-mm-auto-accept-auto-lock-champion.py", 1, true );
-      };
-    </script>
+   
+     <title>Queue Manager</title>
     
-    <a href="#" onClick="cmd()">Chama programa JAVASCRIPT</a><BR>
-  </body>
+        <!-- links ou imports -->
+        <link rel="stylesheet" href="style.css">
+        <script src="main_2.js"></script>
+  
+  </head>
+    <body>
+      
+      <header>
+        <nav>
+          <a>Queue Manager</a>
+        </nav>
+      </header>
+        <main>
+          <section>
+            <div>
+              <!-- search id champion div -->
+            </div>
+          </section>
+            <section>
+              <div>
+                  <!-- which champion priory list -->
+                  <h1>which champ you want to pick?</h1>
+              </div>
+              <div>
+                <!-- get id list -->
+              </div>
+            </section>
+              <section>
+                <div>
+                  <!-- turn on instalock -->
+                  <h2>turn on instalock?</h2>
+                    <div class="toggle">
+                      <input id="switch" type="checkbox" name="theme">
+                      <label for="switch"></label>
+                    </div>
+                </div>
+              </section>
+        </main>
+      <footer>
+        <div>
+          <!-- start queue and stop -->
+        </div>
+      </footer>
+    </body>
 </html>
