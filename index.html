@@ -8,34 +8,41 @@
         <!-- links ou imports -->
         <link rel="stylesheet" href="style.css">
         <script src="main_2.js"></script>
-  
-  </head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;800&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Amiko:wght@700&display=swap" rel="stylesheet">
+      </head>
     <body>
       
-      <header>
+      <header class="header-style">
         <nav>
-          <a>Queue Manager</a>
+          <a class="title-app">Queue<br> Manager</a>
         </nav>
       </header>
-        <main>
-          <section>
-            <div>
+        <main class="main-content">
+          <section class="main-content-top">
+            <div class="search-div">
               <!-- search id champion div -->
+              <!-- <input type="text" placeholder="Search id champions here" 
+              class="search-id"/> -->
             </div>
           </section>
-            <section>
-              <div>
+            <section class="main-content-mid">
+              <div class="div-which">
                   <!-- which champion priory list -->
-                  <h1>which champ you want to pick?</h1>
+                  <h1 id="text-which">which champ you want to pick?</h1>
               </div>
-              <div>
+              <div class="div-get-id">
                 <!-- get id list -->
               </div>
             </section>
-              <section>
-                <div>
+              <section class="maint-content-bot">
+                <div class="div-instalock">
                   <!-- turn on instalock -->
-                  <h2>turn on instalock?</h2>
+                  <h2 id="text-insta">turn on instalock?</h2>
                     <div class="toggle">
                       <input id="switch" type="checkbox" name="theme">
                       <label for="switch"></label>
@@ -43,10 +50,13 @@
                 </div>
               </section>
         </main>
-      <footer>
-        <div>
+      <footer class="back-footer">
+        <div class="div-footer">
           <!-- start queue and stop -->
+          <button class="button-start">Start<br> Queue</button>
+          <button class="button-stop">STOP!</button>
         </div>
       </footer>
+    
     </body>
 </html>

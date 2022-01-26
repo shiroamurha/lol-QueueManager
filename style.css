@@ -1,7 +1,10 @@
 body {
     background-color: #DCDCDC;
+    font-size: 100%;
 }
 
+
+/* font-family: 'Be Vietnam Pro', sans-serif; */
 input[type=checkbox]{
     height: 0;
     width: 0;
@@ -17,6 +20,8 @@ label {
     float: right;
     border-radius: 100px;
     position: relative;
+    top: 5.2px;
+    left: -9px;
 }
 
 label::after{
@@ -41,5 +46,155 @@ input:checked + label::after {
 }
 
 label:active:after {
-    width: 4
+    width: 4;
 }
+.header-style {
+    position: fixed;
+    width: 375px;
+    height: 82px;
+    top: 0%;
+    left: 0%;
+    border-radius: 0px;
+    
+    background: #FFFFFF;
+}
+.title-app {
+    position:absolute;
+    left: 10%;
+    top: 25%;
+    border-radius: null;
+
+
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 82.6%;
+    /* or 18px */
+
+
+    color: #212237;
+}
+.search-div {
+    position: absolute;
+    width: 322px;
+    height: 37px;
+
+    background: #FFFFFF;
+    border-radius: 15px 2px 2px 15px;
+    left: 25px;
+    top: 108px;
+
+}
+ #text-which{
+
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 17px;
+    line-height: 82.6%;
+    /* or 12px */
+    text-align: center;
+
+    color: #212237;
+
+}
+.div-which{
+    position: absolute;
+    height: 147px;
+    width: 322px;
+    left: 25px;
+    top: 158px;
+    border-radius: 15px 2px 15px 15px;
+    background: #FFFFFF;
+    z-index: 0;
+}
+.div-get-id{
+    position: absolute;
+    width: 322px;
+    height: 51px;
+    left: 25px;
+    top: 258px;
+    background: #F1F1F1;
+    border-radius: 0px 0px 2px 15px;
+    z-index: 1;
+}
+
+
+
+.div-instalock{
+    /* Rectangle 6 */
+
+
+    position: absolute;
+    width: 322px;
+    height: 37px;
+    left: 25px;
+    top: 325px;
+    background: #FFFFFF;
+    border-radius: 15px 2px 2px 15px;
+
+}
+
+#text-insta{
+    position: absolute;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-style: light;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 82.6%;
+    /* or 7px */
+    top: 3.6px;
+    left: 45px;
+    color: #212237;
+
+}
+
+
+
+
+.button-start{
+    position: absolute;
+    width: 196px;
+    height: 82px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 82.6%;
+    /* or 23px */
+    top: 374px;
+    left: 28px;
+    color: #212237;
+    background: #F9AF22;
+    border-radius:  11px 390px 15px 11px;
+    
+}
+.button-stop {
+    position: absolute;
+    width: 104px;
+    height: 19px;
+    top: 435px;
+    left: 243px;
+    background: #FF7575;
+    border-radius: 400px;
+
+    
+    font-family: 'Amiko', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 100.6%;
+    /* or 10px */
+
+    text-align: center;
+    letter-spacing: 0.325em;
+
+    color: #FFFFFF;
+}
+
+/* ESSE COMANDO NAO FUNCIONA FOADASE VOU SURTAR AAAAAAAAASSSSSAAAAAAAAAAAAAAAAAAA */
+button:focus {
+    outline:none;
+    box-shadow: none;
+  }
