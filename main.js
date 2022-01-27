@@ -5,7 +5,10 @@ const createWindow = () => {
     width: 375,
     height: 495,
     resizable: false,
-  });
+    webPreferences: {
+      nodeIntegration: true,
+  }
+});
 
   win.setMenu(null);
   win.loadFile('index.html');
