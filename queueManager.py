@@ -1,19 +1,10 @@
-###############################################################################
-# League of Legends (LCU API) script
+##############################################################################
 #
-# Auto accept matchmaking
-# Automatic/instant pick champion
-# Automatic/instant lock champion
-# Set High process priority
+#   modified code from @Asbra 
 #
-# Usage:
-# python lcu-mm-auto-accept-auto-lock-champion.py "Jax" "Xayah"
-# 
-# Edit the "championsPrio" list below to the champions you want.
-# Champion names passed as arguments get highest priority.
+#   https://gist.github.com/Asbra/484165c4dd171e58275a1a0fb83e6978
 #
-# Built on Python 3.x
-# Dependencies: requests, colorama
+##############################################################################
 import requests
 import urllib3
 import json
@@ -24,16 +15,17 @@ import sys
 import psutil
 from colorama import Fore, Back, Style
 
-# Set to your game directory (where LeagueClient.exe is)
-gamedirs = [r'C:\\Riot Games\\League of Legends\\LeagueClient',
-            r'C:\\Riot Games\\League of Legends']
 
-# Set to True to auto lock in the champion selection
 
-id_champions = open('id_champ.json', 'r')
-id_champions_content = json.load(id_champions)
+config = open('config.json', 'r')
+loaded_configs = json.load(config)
+gamepath = loaded_configs.get('gamepath')
 
-get_champion_lock = id_champions_content.get('championLock')
+gamedirs = [rf'{gamepath}\\LeagueClient',
+            rf'{gamepath}']
+
+
+get_champion_lock = loaded_configs.get('championLock')
 if get_champion_lock == 1:
 
     championLock = True
@@ -41,8 +33,8 @@ if get_champion_lock == 1:
     id_champions_list = []
 
     for i in range(1, 4):
-        if id_champions_content.get(f'id{i}') != 0:
-            id_champions_list.append(id_champions_content.get(f'id{i}'))
+        if loaded_configs.get(f'id{i}') != 0:
+            id_champions_list.append(loaded_configs.get(f'id{i}'))
         else:
             continue
 
