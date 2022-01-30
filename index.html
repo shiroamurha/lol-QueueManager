@@ -40,13 +40,7 @@
                 <form action="" method="submit" class="pesquisa">
                   <input type="text" placeholder="ex: 123 123 123" 
               class="get-id" id="name"/>
-                
-                <!--                                       shiro notas                                             -->
-
-                <!--                  o botao do get ta sem formataçao (pra mim) por algum motivo                  -->
-
                 <button type="submit" id="send"class="get-button">get</button>
-
                 </form>
               </div>
             </section>
@@ -62,7 +56,7 @@
                   <!-- turn on instalock -->
                   <h2 id="text-insta">turn on instalock?</h2>
                     <div class="toggle">
-                      <input id="switch" type="checkbox" name="theme">
+                      <input onclick="get_switch_value()" id="switch" type="checkbox" name="theme">
                       <label for="switch"></label>
                     </div>
                 </div>
@@ -71,7 +65,13 @@
       <footer class="back-footer">
         <div class="div-footer">
           <!-- start queue and stop -->
-          <button class="button-start">start queue</button>
+
+
+          <!-- <button onclick="run()" class="button-start">start queue</button> -->
+          <button  class="button-start">start queue</button>
+
+
+          <script src=index.js async></script>
         </div>
       </footer>
      <!--  -->
