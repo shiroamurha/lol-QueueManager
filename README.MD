@@ -1,6 +1,6 @@
 
 
-<h1> >v2 ola tasolol, <br>voce tem uma task list!!!!!!!</h1>
+<h1> >v2 ola tasolol, <br>voce tem uma task list!!!!!!!!</h1>
 
 
 - [ ] criar um evento que faz a div de escolher champ ficar cinza e inclicável quando o switch do instalock tiver no off<br>
