@@ -1,19 +1,22 @@
 
 
 
-
-
-
-
 var switch_value
 var button_start_event = document.getElementsByClassName("button-start")
 function run(){
-    const shell = require("shelljs");
+    
 
     //POE A pica de escrever no json antes de executa o programa
 
-    button_start_event.onclick = shell.exec("python C:\\Users\\amurha_p\\my-electron-app\\queueManager.py");
-    console.log('ss');
+    
+    const {ipcRenderer} = require('electron')
+    // Synchronous message emmiter and handler
+
+    // Async message sender
+    button_start_event.onclick(ipcRenderer.send('asynchronous-message', 'sezo'));
+    
+
+    
 };
 
 function get_switch_value(){
