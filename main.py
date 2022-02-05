@@ -35,7 +35,7 @@ def start_queue():
 
 if __name__ == '__main__':
 
-    app.run(host='127.0.0.1', port=5000, debug=on)
+    app.run(host='127.0.0.1', port=5000, debug_mode=on)
 try:
     print(get_champ)
 except:
