@@ -7,10 +7,10 @@
 
 - [ ] criar um cabeçalho abaixo do titulo com um pathfinder<br>
 
-- [ ] fazer o  js ler as configs e setar elas nos campos ao iniciar a interface
+- [ ] (ta quase)fazer o  js ler as configs e setar elas nos campos ao iniciar a interface
 
-- [ ] fazer a interface retornar os valores pro json<br>
+- [ ] (ta quase)fazer a interface retornar os valores pro json<br>
 
-- [ ] fazer o js rodar a source em py<br><br><br><br><br><br><br><br>
+- [x] fazer o js rodar a source em py<br><br><br><br><br><br><br><br>
 
 te amo -shiro von zahq capone amurha obrien terceiro 
