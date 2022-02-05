@@ -1,8 +1,5 @@
 const { app, BrowserWindow } = require('electron')
-const url = require('url')
-const path = require('path')
-const {ipcMain} = require('electron')
-const shell = require("shelljs");
+
 
 const createWindow = () => {
 
@@ -10,32 +7,30 @@ const createWindow = () => {
         width: 375,
         height: 495,
         resizable: false,
+        webPreferences: {
+            nodeIntegration: true
+        }
         
     });
-  
+
+    var python = require('child_process').spawn('py', ['./main.py']);
+    python.stdout.on('data', function (data) {
+        console.log("data: ", data.toString('utf8'));
+    }); 
+    python.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`); // when error
+    });
+
     win.setMenu(null);
     win.loadFile('index.html');
- 
-    win.loadURL(url.format ({
-        pathname: path.join(__dirname, 'index.html'),
-        protocol: 'file:',
-        slashes: true
-   }))
-  
+    win.loadURL("http://localhost:5000/")
 }
+
 
 app.whenReady().then(() => {
     createWindow()
 })
 
-app.on('window-all-closed', () => {
-    if (process.platform !== 'amurha_p') app.quit()
-})
-
-ipcMain.on('asynchronous-message', (event, arg) => {
-    shell.exec("explorer.exe")
-    console.log(arg)
-
-})
+app.on("quit", function () {});
 
 // C:\Users\amurha_p\my-electron-app\queueManager.py
