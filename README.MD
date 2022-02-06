@@ -9,7 +9,7 @@
 
 - [ ] (ta quase)fazer o  js ler as configs e setar elas nos campos ao iniciar a interface
 
-- [ ] (ta quase)fazer a interface retornar os valores pro json<br>
+- [x] fazer a interface retornar os valores pro json<br>
 
 - [x] fazer o js rodar a source em py<br><br><br><br><br><br><br><br>
 
