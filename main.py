@@ -1,52 +1,102 @@
-from flask import Flask, request
-import queueManager
-import json
+from flask import Flask, jsonify, render_template, request
+from buttons import *
+
+
 
 app = Flask(__name__)
-
-
 
 htmlsrc = open('index.html', 'r')
 htmlsrc = htmlsrc.read()
 
-
-@app.route('/style.css')
-def css():
-    style = open('style.css', 'r')
-    style = style.read()
-    return f'{style}'
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
-    if request.method == 'GET':
-        return f'{htmlsrc}'
-    elif request.method == "POST":
-        
-        get_champ_id1 = int(request.form['get-id'])
-        #get_champ_id2 = request.form['get-id2']
-        #get_champ_id3 = request.form['get-id3']
+    return f'{htmlsrc}'
+
+##########################################
+
+@app.route('/closeLolOn')
+def textbox_event_on():
+    closeLol = button('closeLol.exe')
+    closeLol.run()
+    return ''
+
+@app.route('/closeLolOff')
+def textbox_event_off():
+    closeLol = button('closeLol.exe')
+    closeLol.exit()
+    return ''
+
+##########################################
+
+@app.route('/closeOperaOn')
+def textbox_event_on():
+    closeOpera = button('closeOpera.exe')
+    closeOpera.run()
+    return ''
+
+@app.route('/closeOperaOff')
+def textbox_event_off():
+    closeOpera = button('closeOpera.exe')
+    closeOpera.exit()
+    return ''
+
+##########################################
+
+@app.route('/ctrlwOn')
+def textbox_event_on():
+    ctrlw = button('ctrlw.exe')
+    ctrlw.run()
+    return ''
+
+@app.route('/ctrlwOff')
+def textbox_event_off():
+    ctrlw = button('ctrlw.exe')
+    ctrlw.exit()
+    return ''
+
+##########################################
+
+@app.route('/eqrOn')
+def textbox_event_on():
+    eqr = button('eqr.exe')
+    eqr.run()
+    return ''
+
+@app.route('/eqrOff')
+def textbox_event_off():
+    eqr = button('eqr.exe')
+    eqr.exit()
+    return ''
 
 
-        config = json.load(open('config.json', 'r'))
-        config.update({'id1':get_champ_id1})
-        json.dump(config, open('config.json', 'w'), indent=4)
+##########################################
 
+@app.route('/qCtrl3On')
+def textbox_event_on():
+    qCtrl3 = button('qCtrl3.exe')
+    qCtrl3.run()
+    return ''
 
-        print(get_champ_id1)
-        return f'{htmlsrc}'
+@app.route('/qCtrl3Off')
+def textbox_event_off():
+    qCtrl3 = button('qCtrl3.exe')
+    qCtrl3.exit()
+    return ''
 
-@app.route('/start_queue')
-def start_queue():
-    print('tome')
-    queueManager.run()
+##########################################
+
+@app.route('/textboxOn')
+def textbox_event_on():
+    textbox = button('textbox.exe')
+    textbox.run()
+    return ''
+
+@app.route('/textboxOff')
+def textbox_event_off():
+    textbox = button('textbox.exe')
+    textbox.exit()
     return ''
 
 if __name__ == '__main__':
 
     app.run(host='127.0.0.1', port=5000)
-try:
-    pass
-    #print(get_champ_id)
-except:
-    #print('nao deu')
-    pass
