@@ -1,102 +1,109 @@
-from flask import Flask, jsonify, render_template, request
-from buttons import *
+from flask import Flask, request, redirect
+import queueManager
+import json
 
 
 
 app = Flask(__name__)
 
+championNames = {
+    "annie":"1","olaf":"2","galio":"3","twisted fate":"4","xin zhao":"5","urgot":"6",
+    "leblanc":"7","vladimir":"8","fiddlesticks":"9","kayle":"10","master yi":"11","alistar":"12",
+    "ryze":"13","sion":"14","sivir":"15","soraka":"16","teemo":"17","tristana":"18",
+    "warwick":"19","nunu":"20","miss fortune":"21","ashe":"22","tryndamere":"23","jax":"24",
+    "morgana":"25","zilean":"26","singed":"27","evelynn":"28","twitch":"29","karthus":"30",
+    "cho\'gath":"31","amumu":"32","rammus":"33","anivia":"34","shaco":"35","dr. mundo":"36",
+    "sona":"37","kassadin":"38","irelia":"39","janna":"40","gangplank":"41","corki":"42",
+    "karma":"43","taric":"44","veigar":"45","trundle":"48","swain":"50","caitlyn":"51",
+    "blitzcrank":"53","malphite":"54","katarina":"55","nocturne":"56","maokai":"57",
+    "renekton":"58","jarvan iv":"59","elise":"60","orianna":"61","wukong":"62","brand":"63",
+    "lee sin":"64","vayne":"67","rumble":"68","cassiopeia":"69","skarner":"72","heimerdinger":"74",
+    "nasus":"75","nidalee":"76","udyr":"77","poppy":"78","gragas":"79","pantheon":"80","ezreal":"81",
+    "mordekaiser":"82","yorick":"83","akali":"84","kennen":"85","garen":"86","leona":"89","malzahar":"90",
+    "talon":"91","riven":"92","kog\'maw":"96","shen":"98","lux":"99","xerath":"101","shyvana":"102",
+    "ahri":"103","graves":"104","fizz":"105","volibear":"106","rengar":"107","varus":"110","nautilus":"111",
+    "viktor":"112","sejuani":"113","fiora":"114","ziggs":"115","lulu":"117","draven":"119","hecarim":"120",
+    "kha\'zix":"121","darius":"122","jayce":"126","lissandra":"127","diana":"131","quinn":"133","syndra":"134",
+    "aurelion sol":"136","kayn":"141","zoe":"142","zyra":"143","kai\'sa":"145","gnar":"150","zac":"154",
+    "yasuo":"157","vel\'koz":"161","taliyah":"163","camille":"164","braum":"201","jhin":"202","kindred":"203",
+    "jinx":"222","tahm kench":"223","lucian":"236","zed":"238","kled":"240","ekko":"245","vi":"254",
+    "aatrox":"266","nami":"267","azir":"268","thresh":"412","illaoi":"420","rek\'sai":"421",
+    "ivern":"427","kalista":"429","bard":"432","rakan":"497","xayah":"498","ornn":"516","pyke":"555"
+}
+
 htmlsrc = open('index.html', 'r')
 htmlsrc = htmlsrc.read()
 
-@app.route('/')
+
+@app.route('/style.css')
+def css():
+    style = open('style.css', 'r')
+    style = style.read()
+    return f'{style}'
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return f'{htmlsrc}'
+        return f'{htmlsrc}'
+    
 
-##########################################
+@app.route('/recieve_champ_names', methods=['POST'])
+def champ_name_treatment():
+    if request.method == "POST":
+        
+        get_champ_name1 = str(request.form['get-id']).lower()
+        #get_champ_id2 = str(request.form['get-id2']).lower()
+        #get_champ_id3 = str(request.form['get-id3']).lower()
 
-@app.route('/closeLolOn')
-def textbox_event_on():
-    closeLol = button('closeLol.exe')
-    closeLol.run()
-    return ''
+        get_champ_id1 = championNames.get(f'{get_champ_name1}')
+        #get_champ_id2 = championNames.get(f'{get_champ_name2}')
+        #get_champ_id3 = championNames.get(f'{get_champ_name3}')
 
-@app.route('/closeLolOff')
-def textbox_event_off():
-    closeLol = button('closeLol.exe')
-    closeLol.exit()
-    return ''
+        if get_champ_id1 == None:
+            get_champ_id1 = -1
+        else:
+            get_champ_id1 = int(get_champ_id1)
 
-##########################################
-
-@app.route('/closeOperaOn')
-def textbox_event_on():
-    closeOpera = button('closeOpera.exe')
-    closeOpera.run()
-    return ''
-
-@app.route('/closeOperaOff')
-def textbox_event_off():
-    closeOpera = button('closeOpera.exe')
-    closeOpera.exit()
-    return ''
-
-##########################################
-
-@app.route('/ctrlwOn')
-def textbox_event_on():
-    ctrlw = button('ctrlw.exe')
-    ctrlw.run()
-    return ''
-
-@app.route('/ctrlwOff')
-def textbox_event_off():
-    ctrlw = button('ctrlw.exe')
-    ctrlw.exit()
-    return ''
-
-##########################################
-
-@app.route('/eqrOn')
-def textbox_event_on():
-    eqr = button('eqr.exe')
-    eqr.run()
-    return ''
-
-@app.route('/eqrOff')
-def textbox_event_off():
-    eqr = button('eqr.exe')
-    eqr.exit()
-    return ''
+        # if get_champ_id2 == None:
+        #     get_champ_id2 = -1
+        # else:
+        #     get_champ_id3 = int(get_champ_id3)
 
 
-##########################################
+        # if get_champ_id3 == None:
+        #     get_champ_id3 = -1
 
-@app.route('/qCtrl3On')
-def textbox_event_on():
-    qCtrl3 = button('qCtrl3.exe')
-    qCtrl3.run()
-    return ''
+        # else:
+        #     get_champ_id3 = int(get_champ_id3)
 
-@app.route('/qCtrl3Off')
-def textbox_event_off():
-    qCtrl3 = button('qCtrl3.exe')
-    qCtrl3.exit()
-    return ''
+        global config
+        config = json.load(open('config.json', 'r'))
+        config.update({
 
-##########################################
+            'id1':get_champ_id1
+            #'id2':get_champ_id2,
+            #'id2':get_champ_id3
 
-@app.route('/textboxOn')
-def textbox_event_on():
-    textbox = button('textbox.exe')
-    textbox.run()
-    return ''
+        })
+        
+        json.dump(config, open('config.json', 'w'), indent=4)
 
-@app.route('/textboxOff')
-def textbox_event_off():
-    textbox = button('textbox.exe')
-    textbox.exit()
+
+        print(get_champ_id1)
+        return redirect('/')
+
+
+@app.route('/start_queue')
+def start_queue():
+    queueManager.run()
+    json.dump(config, open('config.json', 'w'), indent=4)
     return ''
 
 if __name__ == '__main__':
 
     app.run(host='127.0.0.1', port=5000)
+try:
+    pass
+    #print(get_champ_id)
+except:
+    #print('nao deu')
+    pass
