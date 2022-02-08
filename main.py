@@ -94,8 +94,8 @@ def champ_name_treatment():
 
 @app.route('/start_queue')
 def start_queue():
-    queueManager.run()
     json.dump(config, open('config.json', 'w'), indent=4)
+    queueManager.run()
     return ''
 
 if __name__ == '__main__':
