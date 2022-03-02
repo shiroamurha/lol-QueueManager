@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-   
-        <title>Queue Manager</title>
-    
-            <!-- links ou imports -->
-            
-            <!-- <link type="text/css" rel="stylesheet" href="/style.css"> -->
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;800&display=swap" rel="stylesheet">
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Amiko:wght@700&display=swap" rel="stylesheet">
-
-            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
-            <script type="text/javascript">
-                $(function() {
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Queue Manager
+  </title>
+  <!-- links ou imports -->
+  <!-- <link type="text/css" rel="stylesheet" href="/style.css"> -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;800&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Amiko:wght@700&amp;display=swap" rel="stylesheet"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   $(function() {
                     $("#button-start").click(function (event) {
                         $.getJSON('/start_queue', { }, function(data) { });
-                        return false; 
+                        jQuery('#loader').toggle('show');
+						$(function() {
+						$('#status').html('waiting for queue...');
+						});
+						return false; 
                     });
                 });
-                        
-            </script> 
-
-
-
-        <style>
-
-            body {
+				function BlindOrDraft(checkbox) {
+    			var options = document.getElementsByName('mode')
+    			options.forEach((item) => {
+        		if (item !== checkbox) item.checked = false
+   			 })
+			};
+  </script>
+  <style>
+   body {
                 background-color: #212237;
                 font-size: 100%;
 				
@@ -38,7 +42,7 @@
 
 
         /* font-family: 'Be Vietnam Pro', sans-serif; */
-            input[type=checkbox]{
+            .switch{
                 height: 0;
                 width: 0;
                 visibility: hidden;
@@ -83,7 +87,7 @@
 	        }
 	        .header-style {
 	            position: fixed;
-	            width: 375px;
+	            width: 484px;
 	            height: 82px;
 	            top: 0%;
 	            left: 0%;
@@ -116,72 +120,47 @@
 	            top: 110px; */
 
 	        /* } */
-	        .search-id{
-	            border: none;
-	            outline: none;
-	            position: absolute;
-	            width: 318px;
-	            height: 40px;
-	            left: 25px;
-	            top: 113px;
-	            background: #F9AF22;
-	            border-radius: 2px 2px 0px 0px;
-	            z-index: 1;
-	            cursor: pointer;
-	            font-family: 'Be Vietnam Pro', sans-serif;
-	            font-style: normal;
-	            font-weight: 300;
-	            font-size: 15px;
-	            line-height: 82.6%;
-	            /* or 12px */
+	        .headers-1{
+	            
+position: fixed;
+width: 414px;
+height: 36px;
+left: calc(50% - 414px/2);
+top: 117px;
+z-index: 3;
+background: #F9AF22;
+border-radius: 2px 2px 0px 0px;
 
-	            display: flex;
-	            align-items: center;
-	            text-align: center;
-
-	            color: #212237;
-
-	            transition: background-color .3s;
-
-	        }
-	        .search-id:hover{
-	            background-color: #FFC962;
-	        }
-	        .search-id:active{
-	                background-color: #D88D00;
 	        }
 	         #text-which{
 
-	            font-family: 'Be Vietnam Pro', sans-serif;
-	            position: absolute;
+				position: fixed;
+width: 107px;
+height: 20px;
+left: 82px;
+top: 127px;
 
-	            left: 25px;
-	            top: 35px;
+font-family: 'Be Vietnam Pro', sans-serif;
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
 
-	            font-style: normal;
-	            font-weight: 800;
-	            font-size: 20px;
-	            line-height: 82.6%;
-	        /* or 17px */
+/* or 13px */
 
-
-	            color: #212237;
+color: #212237;
 
 	        }
-	        .div-which{
-	            position: absolute;
-	            width: 322px;
-	            height: 214px;
-	            left: 26px;
-	            top: 163px;
+	        .div-main{
 	            
-	            background: #FFFFFF;
-	            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	            
-	            border-radius: 2px, 2px, 2px, 2px;
-	            left: 25px;
-	            top: 138px;
-	            z-index: 0;
+position: absolute;
+width: 414px;
+height: 278px;
+left: calc(50% - 414px/2);
+top: calc(50% - 278px/2 + 10.5px);
+
+background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 2px;
 	        }
 	        .div-get-id{
 	            position: absolute;
@@ -209,22 +188,6 @@
 
 	        }
 
-	        #text-insta{
-	            position: absolute;
-	            font-family: 'Be Vietnam Pro', sans-serif;
-	            font-style: normal;
-	            font-weight: 300;
-	            font-size: 15px;
-	            line-height: 100.6%;
-	            /* or 15px */
-	            left: 40px;
-	            top: -4.5px;
-	            color: #5B5B5B;
-
-	        }
-
-
-
 
 	        .button-start{
 	            border: none;
@@ -245,86 +208,34 @@
 
 	            cursor: pointer;
 	            color: #212237;
-	            bottom: 23px;
-	            left: 106px;
+	            top: 439px;
+	            left: 58px;
 	            
 	        }
 	        .div-footer {
 	            position: fixed;
-	            width: 375px;
-	            height: 82px;
+	            width: 484px;
+	            height: 69px;
 	            left: 0px;
-	            bottom: -4px;
+	            bottom: 0px;
 	            background: #FFFFFF;
 	            box-shadow: 0px -3px 0px #F9AF22;
 	            
 
 
 	        }
-	        .get-id {
-	            border: none;
-	            outline: none;
-	            position: relative;
-	            width: 288px;
-	            height: 49px;
-	            left: 13px;
-	            background: #E5E5E5;
-	            border-radius: 40px;
-
-	            font-family: 'Be Vietnam Pro', sans-serif;
-	            font-style: normal;
-	            font-weight: 300;
-	            font-size: 15px;
-	            line-height: 82.6%;
-	            /* or 12px */
-
-	            display: flex;
-	            align-items: center;
-	            text-align: center;
-
-	            color: #212237;
-	            }
-	        .get-button {
-	            border: none;
-	            outline: none;
-	            position: relative;
-	            width: 63px;
-	            height: 29px;
-	            left: 248px;
-	            top: -23px;
-
-	            cursor: pointer;
-	            background: #F9AF22;
-	            border-radius: 40px 0px 5px 11px;
-
-	            font-family: 'Be Vietnam Pro', sans-serif;
-	            font-style: normal;
-	            font-weight: 800;
-	            font-size: 15px;
-	            line-height: 82.6%;
-	            /* or 12px */
-	            transition: background-color .3s;
-
-	            color: #212237;
-
-	        }
-	        .get-button:hover{
-	            background-color: #FFC962;
-	        }
+	            
 	        .button-start:hover{
 	            background-color: #FFC962;
 	        }
 
 	        /* click button animation */
 
-	        .get-button:active{
-	            background-color: #D88D00;
-	        }
 	        .button-start:active{
 	            background-color: #D88D00;
 	}
 			
-			.loader {
+			#loader {
 				animation: is-rotating 1s infinite;
 				border: 5px solid #e5e5e5;
 				border-radius: 50%;
@@ -332,80 +243,132 @@
 				height: 13px;
 				width: 13px;
 				position: fixed;
-				bottom: 30px;
-	            left: 275px;
+				bottom: 22px;
+	            left: 420px;
+				display: none;
 }			@keyframes is-rotating {
 			to {
 				transform: rotate(1turn);
 			}
+		}
+
+			#status-text {
+						position: fixed;
+		width: 87px;
+		height: 17px;
+		left: 309px;
+		top: 417px;
+
+		font-family: 'Be Vietnam Pro', sans-serif;
+		font-style: normal;
+		font-weight: 800;
+		font-size: 20px;
 			}
+			#status {
+				position: fixed;
 
-			
-        </style> 
+left: 279px;
+top: 442px;
 
-    </head>
-    <body>
-      
-      <header class="header-style">
-        <nav>
-          <a class="title-app">Queue<br> Manager</a>
-        </nav>
-      </header>
-        <main class="main-content">
-          <section class="main-content-top">
-            <div class="search-div">
-              <!-- search id champion div -->
-              <input type="text" placeholder="Search id champions here" 
-              class="search-id"/>
-            </div>
-          </section>
-            <section class="main-content-mid">
-              <div class="div-which">
-                  <!-- which champion priory list -->
-                  <h1 id="text-which">which champ do you want<br> to pick?</h1>
-              </div>
-              <div class="div-get-id">
-                <!-- get id list -->
-                <form action="/recieve_champ_names" method="post" class="pesquisa">
-                  <input name="get-id" type="text" placeholder="ex: 123 123 123" 
-              class="get-id" id="name"/>
-                <button type="submit" id="send"class="get-button">get</button>
-                </form>
-              </div>
-            </section>
-              <section class="maint-content-bot">
-                <div class="div-instalock">
+font-family: 'Be Vietnam Pro', sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 14px;
 
-                    <!--                                       shiro notas                                             -->
+/* identical to box height, or 12px */
 
+color: #212237;
 
-                    <!--- faz a tela de por a lista de boneco fica cinza e inclicavel quando o instalock ta desativado -->
-
-
-                  <!-- turn on instalock -->
-                  <h2 id="text-insta">instalock: </h2>
-                    <div class="toggle">
-                      <input id="switch" type="checkbox" name="theme">
-                      <label for="switch"></label>
-                    </div>
-                </div>
-              </section>
-        </main>
-      <footer class="back-footer">
-        <div class="div-footer">
-          <!-- start queue and stop -->
-			
-
-          <!-- 
+			}
+  </style>
+ </head>
+ <body>
+  <header class="header-style">
+   <nav>
+    <a class="title-app">
+     Queue
+     <br/>
+     Manager
+    </a>
+   </nav>
+  </header>
+  <main class="main-content">
+   <section class="main-content-top">
+    <div class="headers-1">
+    </div>
+   </section>
+   <section class="main-content-mid">
+    <div class="div-main">
+     <!-- which champion priory list -->
+     <h1 id="text-header1">
+      pick priority
+     </h1>
+     <h1 id="text-header2">
+      ban priority
+     </h1>
+     <h1 id="text-header3">
+      instalock
+     </h1>
+     <h1 id="text-header4">
+      gamepath
+     </h1>
+    </div>
+    <div class="div-get-id">
+     <!-- get id list -->
+     <form action="/" class="championid" method="post">
+      <input class="pick-prio1" id="name" name="pick-prio1" placeholder="yasuo" type="text"/>
+     </form>
+     <form action="/" class="championid" method="post">
+      <input class="pick-prio2" id="name" name="pick-prio2" placeholder="yasuo" type="text"/>
+     </form>
+     <form action="/" class="championid" method="post">
+      <input class="pick-prio3" id="name" name="pick-prio3" placeholder="yasuo" type="text"/>
+     </form>
+     <form action="/" class="championid" method="post">
+      <input class="ban-prio1" id="name" name="ban-prio1" placeholder="yasuo" type="text"/>
+     </form>
+     <form action="/" class="championid" method="post">
+      <input class="ban-prio2" id="name" name="ban-prio2" placeholder="yasuo" type="text"/>
+     </form>
+     <form action="/" class="championid" method="post">
+      <input class="ban-prio3" id="name" name="ban-prio3" placeholder="yasuo" type="text"/>
+     </form>
+     <p>
+      queue type
+      <input checked="" name="mode" onclick="BlindOrDraft(this)" type="checkbox" value="blind"/>
+      <input name="mode" onclick="BlindOrDraft(this)" type="checkbox" value="draft"/>
+     </p>
+    </div>
+   </section>
+   <section class="maint-content-bot">
+    <!-- <div class="div-instalock"> -->
+    <!--                                       shiro notas                                             -->
+    <!--- faz a tela de por a lista de boneco fica cinza e inclicavel quando o instalock ta desativado -->
+    <!-- turn on instalock -->
+    <div class="toggle">
+     <input id="switch" name="theme" type="checkbox">
+      <label for="switch">
+      </label>
+     </input>
+    </div>
+   </section>
+  </main>
+  <footer class="back-footer">
+   <div class="div-footer">
+    <!-- start queue and stop -->
+    <!-- 
           <button class="button-start" id="button-start">start queue</button> -->
-		  <div class="loader">
-
-		  </div>
-          <input class="button-start" type="button" id="button-start" value="start queue"/>
-
-          
-        </div>
-      </footer>
-     <!--  -->
-    </body>
+    <div id="loader">
+    </div>
+    <input class="button-start" id="button-start" type="button" value="start queue"/>
+    <p id="status-text">
+     status
+    </p>
+    <p id="status">
+     waiting for start...
+    </p>
+   </div>
+  </footer>
+  <!-- -->
+ </body>
 </html>
