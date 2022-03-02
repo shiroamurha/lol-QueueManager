@@ -1,7 +1,10 @@
 {
     "gamepath": "C:\\Riot Games\\League of Legends",
     "championLock": 1,
-    "id1": 120,
-    "id2": 0,
-    "id3": 0
+    "pick_prio_id1": 120,
+    "pick_prio_id2": 0,
+    "pick_prio_id3": 0,
+    "ban_prio_id1": 0,
+    "ban_prio_id2": 0,
+    "ban_prio_id3": 0
 }
