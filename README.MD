@@ -1,9 +1,7 @@
 
 
-<h1> >v2 ola tasolol, <br>voce tem uma task list!!!!!!!!</h1>
+<h1> >v3, ola sirolol!! o estilo qebro (depois o pai arruma, to indo dormir) mas acho q com isso tu ja consegue programar oq falta </h1>
 
-
-- [ ] criar um evento que faz a div de escolher champ ficar cinza e inclicável quando o switch do instalock tiver no off<br>
 
 - [ ] criar um cabeçalho abaixo do titulo com um pathfinder<br>
 
