@@ -2,8 +2,13 @@
 
 <h1> >v3, ola sirolol!! o estilo qebro (depois o pai arruma, to indo dormir) mas acho q com isso tu ja consegue programar oq falta </h1>
 
+- [ ] sirolo apertou o botao start? (esse fico bala)
 
-- [ ] criar um cabeçalho abaixo do titulo com um pathfinder<br>
+- [ ] izinho com informação de uso
+
+- [ ] queue type mandar se e blind ou draft pro json
+
+- [ ] faze o input type="file" (vulgo pathfinder) realmente funcionar (esse ate cristo tentou, ps: nao conseguiu) <br>
 
 - [ ] (ta quase)fazer o  js ler as configs e setar elas nos campos ao iniciar a interface
 
