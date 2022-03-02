@@ -1,4 +1,5 @@
 from flask import Flask, request, redirect
+from bs4 import BeautifulSoup
 import queueManager
 import json
 
@@ -31,64 +32,105 @@ championNames = {
     "ivern":"427","kalista":"429","bard":"432","rakan":"497","xayah":"498","ornn":"516","pyke":"555"
 }
 
-htmlsrc = open('index.html', 'r')
-htmlsrc = htmlsrc.read()
 
 
-@app.route('/style.css')
-def css():
-    style = open('style.css', 'r')
-    style = style.read()
-    return f'{style}'
+# @app.route('/style.css', methods=['GET'])
+# def css():
+#     style = open('style.css', 'r').read()
+#     return f'<styles>{style}</styles>'
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-        return f'{htmlsrc}'
+    
+        style = open('style.css', 'r').read()
+        html = BeautifulSoup(
+            
+            open('index.html', 'r').read(), 
+            features="html.parser"
+        )
+        
+        style_inject = html.new_tag('style')
+        style_inject.string = style
+        
+        html.head.style.replace_with(style_inject)
+        return f'{html}'
     
 
 @app.route('/recieve_champ_names', methods=['POST'])
-def champ_name_treatment():
+def champ_names_treatment():
     if request.method == "POST":
-        
-        get_champ_name1 = str(request.form['get-id']).lower()
-        #get_champ_id2 = str(request.form['get-id2']).lower()
-        #get_champ_id3 = str(request.form['get-id3']).lower()
+############################################################### pick prio
 
-        get_champ_id1 = championNames.get(f'{get_champ_name1}')
-        #get_champ_id2 = championNames.get(f'{get_champ_name2}')
-        #get_champ_id3 = championNames.get(f'{get_champ_name3}')
+        #get champ name from form
+        get_pick_priority1 = str(request.form['pick-prio1']).lower()
+        get_pick_priority2 = str(request.form['pick-prio2']).lower()
+        get_pick_priority3 = str(request.form['pick-prio3']).lower()
 
-        if get_champ_id1 == None:
-            get_champ_id1 = -1
+        #match champ name with respective id
+        get_pick_priority1 = championNames.get(f'{get_pick_priority1}')
+        get_pick_priority2 = championNames.get(f'{get_pick_priority2}')
+        get_pick_priority3 = championNames.get(f'{get_pick_priority3}')
+
+        #checking if pick prio is None 
+        if get_pick_priority1 == None:
+            get_pick_priority1 = 0
         else:
-            get_champ_id1 = int(get_champ_id1)
+            get_pick_priority1 = int(get_pick_priority1)
 
-        # if get_champ_id2 == None:
-        #     get_champ_id2 = -1
-        # else:
-        #     get_champ_id3 = int(get_champ_id3)
+        if get_pick_priority2 == None:
+            get_pick_priority2 = 0
+        else:
+            get_pick_priority3 = int(get_pick_priority3)
 
+        if get_pick_priority3 == None:
+            get_pick_priority3 = 0
+        else:
+            get_pick_priority3 = int(get_pick_priority3)
+############################################################### ban prio        
+        
+        #get champ name from form
+        get_ban_priority1 = str(request.form['ban-prio1']).lower()
+        get_ban_priority2 = str(request.form['ban-prio2']).lower()
+        get_ban_priority3 = str(request.form['ban-prio3']).lower()
 
-        # if get_champ_id3 == None:
-        #     get_champ_id3 = -1
+        #match champ name with respective id
+        get_ban_priority1 = championNames.get(f'{get_ban_priority1}')
+        get_ban_priority2 = championNames.get(f'{get_ban_priority2}')
+        get_ban_priority3 = championNames.get(f'{get_ban_priority3}')
 
-        # else:
-        #     get_champ_id3 = int(get_champ_id3)
+        #checking if ban prio is None 
+        if get_ban_priority1 == None:
+            get_ban_priority1 = 0
+        else:
+            get_ban_priority1 = int(get_ban_priority1)
+
+        if get_ban_priority2 == None:
+            get_ban_priority2 = 0
+        else:
+            get_ban_priority3 = int(get_ban_priority3)
+
+        if get_ban_priority3 == None:
+            get_ban_priority3 = 0
+        else:
+            get_ban_priority3 = int(get_ban_priority3)
+##############################################################
 
         global config
         config = json.load(open('config.json', 'r'))
         config.update({
 
-            'id1':get_champ_id1
-            #'id2':get_champ_id2,
-            #'id2':get_champ_id3
-
+            "pick_prio_id1": get_pick_priority1,
+            "pick_prio_id2": get_pick_priority2,
+            "pick_prio_id3": get_pick_priority3,
+            "ban_prio_id1": get_ban_priority1,
+            "ban_prio_id2": get_ban_priority2,
+            "ban_prio_id3": get_ban_priority3
         })
         
         json.dump(config, open('config.json', 'w'), indent=4)
 
 
-        print(get_champ_id1)
+        print(get_pick_priority1)
         return redirect('/')
 
 
@@ -101,9 +143,9 @@ def start_queue():
 if __name__ == '__main__':
 
     app.run(host='127.0.0.1', port=5000)
-try:
-    pass
-    #print(get_champ_id)
-except:
-    #print('nao deu')
-    pass
+# try:
+#     pass
+#     #print(get_pick_priority)
+# except:
+#     #print('nao deu')
+#     pass
