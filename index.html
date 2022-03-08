@@ -16,22 +16,69 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript">
   </script>
   <script type="text/javascript">
+   
+//eita bixo codigo low levelKKKKKKKKKKKKKKKKKKKKK
    $(function() {
-                    $("#button-start").click(function (event) {
-                        $.getJSON('/start_queue', { }, function(data) { });
-                        jQuery('#loader').toggle('show');
-						$(function() {
-						$('#status').html('waiting for queue...');
-						});
-						return false; 
-                    });
-                });
+        $("#button-start").click(function (event) {
+        	$.getJSON('/start_queue', { }, function(data) { });
+        
+
+        jQuery('#loader').toggle('show');
+		
+		$(function() {
+		
+			$('#status').html('waiting for queue...');
+			});			
+
+			return false; 
+
+        });
+    });
 				function BlindOrDraft(checkbox) {
-    			var options = document.getElementsByName('mode')
-    			options.forEach((item) => {
+    				var options = document.getElementsByName('mode')
+    				options.forEach((item) => {
         		if (item !== checkbox) item.checked = false
-   			 })
-			};
+   			})
+		};
+
+			// esta função pega o json e transforma (/adiciona os item) em todas dropdown list com o nome dos champ
+	$(function() {
+		    //o papo e pega o json de uma rota e armazena na var data
+		    //id é oq salva no json, e o name é oq aparece na option do html 
+		    var data = [
+		    {
+		        "id": "default",
+		        "name": "default"
+		    },
+		    {
+		        "id": "lulu",
+		        "name": "lulu"
+		    },
+		    {
+		    	"id": "katarina",
+		        "name": "katarina"
+		    },
+		    {
+		    	"id": "zed",
+		        "name": "zed"
+		    },
+		    {
+		    	"id": "yasuo",
+		        "name": "yasuo"
+		    },
+		    {
+		    	"id": "irelia",
+		        "name": "irelia"
+		    },
+		    {
+		    	"id": "vi",
+		        "name": "vi"
+		    }
+		    ];
+		    $.each(data, function(i, option) {
+		       $('#sel1, #sel2, #sel3, #sel4, #sel5, #sel6').append($('<option/>').attr("value", option.id).text(option.name));
+		    });
+		});
   </script>
   <style>
    body {
@@ -122,45 +169,45 @@
 	        /* } */
 	        .headers-1{
 	            
-position: fixed;
-width: 414px;
-height: 36px;
-left: calc(50% - 414px/2);
-top: 117px;
-z-index: 3;
-background: #F9AF22;
-border-radius: 2px 2px 0px 0px;
+				position: fixed;
+				width: 414px;
+				height: 36px;
+				left: calc(50% - 414px/2);
+				top: 117px;
+				z-index: 3;
+				background: #F9AF22;
+				border-radius: 2px 2px 0px 0px;
 
 	        }
 	         #text-which{
 
 				position: fixed;
-width: 107px;
-height: 20px;
-left: 82px;
-top: 127px;
+				width: 107px;
+				height: 20px;
+				left: 82px;
+				top: 127px;
 
-font-family: 'Be Vietnam Pro', sans-serif;
-font-style: normal;
-font-weight: 800;
-font-size: 16px;
+				font-family: 'Be Vietnam Pro', sans-serif;
+				font-style: normal;
+				font-weight: 800;
+				font-size: 16px;
 
-/* or 13px */
+				/* or 13px */
 
-color: #212237;
+				color: #212237;
 
 	        }
 	        .div-main{
-	            
-position: absolute;
-width: 414px;
-height: 278px;
-left: calc(50% - 414px/2);
-top: calc(50% - 278px/2 + 10.5px);
+					            
+				position: absolute;
+				width: 414px;
+				height: 278px;
+				left: calc(50% - 414px/2);
+				top: calc(50% - 278px/2 + 10.5px);
 
-background: #FFFFFF;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 2px;
+				background: #FFFFFF;
+				box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+				border-radius: 2px;
 	        }
 	        .div-get-id{
 	            position: absolute;
@@ -253,36 +300,75 @@ border-radius: 2px;
 		}
 
 			#status-text {
-						position: fixed;
-		width: 87px;
-		height: 17px;
-		left: 309px;
-		top: 417px;
+				position: fixed;
+				width: 87px;
+				height: 17px;
+				left: 309px;
+				top: 417px;
 
-		font-family: 'Be Vietnam Pro', sans-serif;
-		font-style: normal;
-		font-weight: 800;
-		font-size: 20px;
+				font-family: 'Be Vietnam Pro', sans-serif;
+				font-style: normal;
+				font-weight: 800;
+				font-size: 20px;
 			}
 			#status {
 				position: fixed;
+				left: 279px;
+				top: 442px;
 
-left: 279px;
-top: 442px;
+				font-family: 'Be Vietnam Pro', sans-serif;
+				font-style: normal;
+				font-weight: 300;
+				font-size: 14px;
 
-font-family: 'Be Vietnam Pro', sans-serif;
-font-style: normal;
-font-weight: 300;
-font-size: 14px;
+				/* identical to box height, or 12px */
 
-/* identical to box height, or 12px */
-
-color: #212237;
+				color: #212237;
 
 			}
   </style>
  </head>
  <body>
+ <script type="text/javascript">
+ 		
+ 		//aqui é pra pegar o input de todas lista e armazenar, 
+			// tu tem q pega o valor da var champs e manda pro teu pyto
+			function p_update() {
+
+				 const champ_pick_prio1 = $('#sel1').val();
+				 const champ_pick_prio2 = $('#sel2').val();
+				 const champ_pick_prio3 = $('#sel3').val();
+
+
+				 const champ_pick_prios = [{
+				 	p_id1: champ_pick_prio1,
+				 	p_id2: champ_pick_prio2,
+				 	p_id3: champ_pick_prio3
+				 }];
+
+				 const json_picks = JSON.stringify(champ_pick_prios);
+				 console.log(json_picks)
+
+}
+			function b_update() {
+				 
+				 const champ_ban_prio1 = $('#sel4').val();
+				 const champ_ban_prio2 = $('#sel5').val();
+				 const champ_ban_prio3 = $('#sel6').val();
+
+
+				 const champ_ban_prios = [{
+				 	b_id1: champ_ban_prio1,
+				 	b_id2: champ_ban_prio2,
+				 	b_id3: champ_ban_prio3
+				 }];
+
+				 const json_bans = JSON.stringify(champ_ban_prios);
+				 console.log(json_bans)
+
+}	
+
+ </script>
   <header class="header-style">
    <nav>
     <a class="title-app">
@@ -315,25 +401,24 @@ color: #212237;
     </div>
     <div class="div-get-id">
      <!-- get id list -->
-     <form action="/" class="championid" method="post">
-      <input class="pick-prio1" id="name" name="pick-prio1" placeholder="yasuo" type="text"/>
-     </form>
-     <form action="/" class="championid" method="post">
-      <input class="pick-prio2" id="name" name="pick-prio2" placeholder="yasuo" type="text"/>
-     </form>
-     <form action="/" class="championid" method="post">
-      <input class="pick-prio3" id="name" name="pick-prio3" placeholder="yasuo" type="text"/>
-     </form>
-     <form action="/" class="championid" method="post">
-      <input class="ban-prio1" id="name" name="ban-prio1" placeholder="yasuo" type="text"/>
-     </form>
-     <form action="/" class="championid" method="post">
-      <input class="ban-prio2" id="name" name="ban-prio2" placeholder="yasuo" type="text"/>
-     </form>
-     <form action="/" class="championid" method="post">
-      <input class="ban-prio3" id="name" name="ban-prio3" placeholder="yasuo" type="text"/>
-     </form>
-     <p>
+    
+    <!-- tu ta maluco, olha a diferença dos form pra selectkkkkkk 
+ compacto -->
+    <select id="sel1" onchange="p_update()">
+	</select>
+	 
+	 <select id="sel2" onChange="p_update()">
+	 </select>
+	  
+	  <select id="sel3" onchange="p_update()"></select>
+
+	   <select id="sel4" onchange="b_update()"></select>
+
+	    <select id="sel5" onchange="b_update()"></select>
+
+		 <select id="sel6" onchange="b_update()"></select>
+ 		
+ 		<p>
       queue type
       <input checked="" name="mode" onclick="BlindOrDraft(this)" type="checkbox" value="blind"/>
       <input name="mode" onclick="BlindOrDraft(this)" type="checkbox" value="draft"/>
