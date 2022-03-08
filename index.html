@@ -22,14 +22,11 @@
         $("#button-start").click(function (event) {
         	$.getJSON('/start_queue', { }, function(data) { });
         
-
         jQuery('#loader').toggle('show');
 		
 		$(function() {
-		
 			$('#status').html('waiting for queue...');
 			});			
-
 			return false; 
 
         });
@@ -332,7 +329,8 @@
  <script type="text/javascript">
  		
  		//aqui é pra pegar o input de todas lista e armazenar, 
-			// tu tem q pega o valor da var champs e manda pro teu pyto
+			
+			// tu tem q pegar os valores da json_picks, json_bans e mandar pro teu pyto
 			function p_update() {
 
 				 const champ_pick_prio1 = $('#sel1').val();
@@ -404,11 +402,9 @@
     
     <!-- tu ta maluco, olha a diferença dos form pra selectkkkkkk 
  compacto -->
-    <select id="sel1" onchange="p_update()">
-	</select>
+    <select id="sel1" onchange="p_update()"></select>
 	 
-	 <select id="sel2" onChange="p_update()">
-	 </select>
+	 <select id="sel2" onChange="p_update()"></select>
 	  
 	  <select id="sel3" onchange="p_update()"></select>
 
